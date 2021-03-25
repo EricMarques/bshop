@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% block title %}
+    {{block.super}} - Cadastro
+{% endblock title %}
+{% block title_page %}
+    Cadastro de Serviços
+{% endblock title_page %}
+{% block content %}
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-3">
+                    <!-- Name -->
+                    {{ form.name.errors }} {{ form.name.label_tag }}
+                    <div>
+                        {{form.name}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <!-- Description -->
+                    {{form.description.errors}} {{ form.description.label_tag }}
+                    <div>
+                        {{ form.description }}
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <!-- Price -->
+                    {{ form.price.errors }} {{ form.price.label_tag }}
+                    <div>
+                        {{ form.price }}
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <!-- Status -->
+                    {{ form.status.errors }} {{ form.status.label_tag }}
+                    <div>
+                        {{form.status}}
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right" style="margin-top: 10px; padding: 10px;">
+                <button type="reset" class="btn btn-primary">Limpar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

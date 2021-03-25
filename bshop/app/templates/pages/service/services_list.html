@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{%block title%}
+    {{block.super}} - Listagem
+{%endblock title%}
+{% block title_page %}
+    <div class="row">
+        <div class="col-lg-11">
+            Lista de Serviços
+        </div>
+        <div>
+            <a class="btn btn-primary float-right" style="margin-bottom: -10px" href="#!">
+                <!--<i class="nav-icon fas fa-address-book" title="Adicionar serviço"></i>-->
+                <span class="material-icons" title="Adicionar serviço">
+                    post_add
+                </span>
+            </a>
+        </div>
+    </div>{% endblock title_page %} {% block content %}<br>
+    <table id="data_table" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Serviço</th>
+            <th>Preço</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%for service in services%}
+            <tr>
+                <td>{{service.name}}</td>
+                <td>{{service.price}}</td>
+                <td>{% if service.status == 0 %} Inativo {% else %} Ativo {% endif %}</td>
+                <td class="text-center" width="100px">
+                    <a href="">
+                        <i class="fa fa-edit" title="Editar"></i>
+                    </a>
+                    &nbsp;<span style="color: blue;">|</span> &nbsp;
+                    <a href="">
+                        <i class="fa fa-trash" title="Excluir"></i>
+                    </a>
+                </td>
+            </tr>{% empty %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Não existem serviços cadastrados.
+                </td>
+            </tr>{%endfor%}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Serviço</th>
+            <th>Preço</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </tfoot>
+    </table> {% endblock content %} {% block custom_js %}
+    <script>
+    </script>
+{% endblock custom_js %}

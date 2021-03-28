@@ -37,7 +37,7 @@ class Service(models.Model):
 
     updated_at = models.DateTimeField(
         verbose_name='Alterado em',
-        auto_now=False,
+        auto_now=True,
         null=True,
         blank=True,
     )
@@ -109,7 +109,7 @@ class Address(models.Model):
 
     updated_at = models.DateTimeField(
         verbose_name='Alterado em',
-        auto_now=False,
+        auto_now=True,
         null=True,
         blank=True,
     )
@@ -163,11 +163,13 @@ class Professional(models.Model):
         verbose_name='Serviço',
     )
 
-    address = models.OneToOneField(
+    address = models.ForeignKey(
         Address,
-        on_delete=models.CASCADE,
-        null=False,
         verbose_name='Endereço',
+        related_name='professionals',
+        on_delete=models.CASCADE,
+        help_text='Endereço',
+        null=False,
     )
 
     status = models.BooleanField(
@@ -182,7 +184,7 @@ class Professional(models.Model):
 
     updated_at = models.DateTimeField(
         verbose_name='Alterado em',
-        auto_now=False,
+        auto_now=True,
         null=True,
         blank=True,
     )
@@ -228,9 +230,12 @@ class Establishment(models.Model):
         null=True,
     )
 
-    address = models.OneToOneField(
+    address = models.ForeignKey(
         Address,
+        verbose_name='Endereço',
+        related_name='establishment',
         on_delete=models.CASCADE,
+        help_text='Endereço',
         null=False,
     )
 
@@ -246,7 +251,7 @@ class Establishment(models.Model):
 
     updated_at = models.DateTimeField(
         verbose_name='Alterado em',
-        auto_now=False,
+        auto_now=True,
         null=True,
         blank=True,
     )

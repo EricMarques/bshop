@@ -8,20 +8,41 @@ from app.models import (
 from ..serializers import (
     ServiceModelSerializer,
     ProfessionalModelSerializer,
+    ProfessionalCreateModelSerializer,
     EstablishmentModelSerializer,
 )
 
 
 class ServicesViewSet(viewsets.ModelViewSet):
-    serializer_class = ServiceModelSerializer
+    """
+        List/Add SERVICES
+    """
     queryset = Service.objects.all()
+    serializer_class = ServiceModelSerializer
 
 
 class ProfessionalsViewSet(viewsets.ModelViewSet):
-    serializer_class = ProfessionalModelSerializer
+    """
+        List/Add PROFESSIONALS
+    """
     queryset = Professional.objects.all()
+    serializer_class = ProfessionalModelSerializer
+
+    def get_serializer_class(self):
+        actions = [
+            'create',
+            'update',
+            'partial_update'
+        ]
+        if self.action in actions:
+            return ProfessionalCreateModelSerializer
+
+        return self.serializer_class
 
 
 class EstablishmentsViewSet(viewsets.ModelViewSet):
-    serializer_class = EstablishmentModelSerializer
+    """
+        List/Add ESTABLISHMENTS
+    """
     queryset = Establishment.objects.all()
+    serializer_class = EstablishmentModelSerializer

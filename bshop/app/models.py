@@ -160,7 +160,8 @@ class Professional(models.Model):
 
     service = models.ManyToManyField(
         Service,
-        verbose_name='Serviço',
+        verbose_name='Serviço(s)',
+        related_name='services',
     )
 
     address = models.ForeignKey(

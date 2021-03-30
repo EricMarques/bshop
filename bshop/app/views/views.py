@@ -8,6 +8,7 @@ from app.models import (
 from ..serializers import (
     ServiceModelSerializer,
     ProfessionalModelSerializer,
+    ProfessionalCreateModelSerializer,
     EstablishmentModelSerializer,
 )
 
@@ -26,6 +27,17 @@ class ProfessionalsViewSet(viewsets.ModelViewSet):
     """
     queryset = Professional.objects.all()
     serializer_class = ProfessionalModelSerializer
+
+    def get_serializer_class(self):
+        actions = [
+            'create',
+            'update',
+            'partial_update'
+        ]
+        if self.action in actions:
+            return ProfessionalCreateModelSerializer
+
+        return self.serializer_class
 
 
 class EstablishmentsViewSet(viewsets.ModelViewSet):

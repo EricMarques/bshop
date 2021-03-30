@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from drf_writable_nested import WritableNestedModelSerializer
 
 from .models import (
     Service,
@@ -21,16 +20,21 @@ class AddressModelSerializer(serializers.ModelSerializer):
         exclude = ['updated_at']
 
 
-class ProfessionalModelSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
-    # service = ServiceModelSerializer(many=True)
-    address = AddressModelSerializer()
+class ProfessionalModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Professional
+        exclude = ['updated_at']
+
+
+class ProfessionalCreateModelSerializer(serializers.ModelSerializer):
+    address = AddressModelSerializer(read_only=True)
 
     class Meta:
         model = Professional
         exclude = ['updated_at']
 
 
-class EstablishmentModelSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
+class EstablishmentModelSerializer(serializers.ModelSerializer):
     address = AddressModelSerializer()
 
     class Meta:

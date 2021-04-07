@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{%block title%} {{block.super}} - Empresas {%endblock title%}
+{% block title_page %}
+<div class="row">
+    <div class="col-lg-11">
+        Empresas
+    </div>
+    <div>
+        <a class="btn btn-primary float-right" style="margin-bottom: -10px" href="#!">
+            <!--<i class="nav-icon fas fa-address-book" title="Adicionar serviço"></i>-->
+            <span class="material-icons" title="Adicionar empresa">
+                post_add
+            </span>
+        </a>
+    </div>
+</div>{% endblock title_page %}
+{% block content %}<br>
+<table id="data_table" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Razão Social</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for establishment in establishments %}
+    <tr>
+        <td>{{establishment.name}}</td>
+        <td>{{establishment.company_name}}</td>
+        <td>{% if establishment.status == 0 %} Inativo {% else %} Ativo {% endif %}</td>
+        <td class="text-center" width="100px">
+            <a href="">
+                <i class="fa fa-edit" title="Editar"></i>
+            </a>
+            &nbsp;<span style="color: blue;">|</span> &nbsp;
+            <a href="">
+                <i class="fa fa-trash" title="Excluir"></i>
+            </a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5" class="text-center">
+            Não existem empresas cadastradas.
+        </td>
+    </tr>
+    {%endfor%}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Nome</th>
+        <th>Razão Social</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+    </tfoot>
+</table>
+{% endblock content %}
+
+{% block custom_js %}
+<script type="text/javascript">
+</script>
+{% endblock custom_js %}

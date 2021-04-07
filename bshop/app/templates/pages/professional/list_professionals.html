@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{%block title%}
+    {{block.super}} - Profissionais
+{%endblock title%}
+{% block title_page %}
+    <div class="row">
+        <div class="col-lg-11">
+            Profissionais
+        </div>
+        <div>
+            <a class="btn btn-primary float-right" style="margin-bottom: -10px" href="#!">
+                <!--<i class="nav-icon fas fa-address-book" title="Adicionar serviço"></i>-->
+                <span class="material-icons" title="Adicionar serviço">
+                    post_add
+                </span>
+            </a>
+        </div>
+    </div>{% endblock title_page %} {% block content %}<br>
+    <table id="data_table" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for professional in professionals %}
+            <tr>
+                <td>{{professional.first_name}}</td>
+                <td>{{professional.second_name}}</td>
+                <td>{% if professional.status == 0 %} Inativo {% else %} Ativo {% endif %}</td>
+                <td class="text-center" width="100px">
+                    <a href="">
+                        <i class="fa fa-edit" title="Editar"></i>
+                    </a>
+                    &nbsp;<span style="color: blue;">|</span> &nbsp;
+                    <a href="">
+                        <i class="fa fa-trash" title="Excluir"></i>
+                    </a>
+                </td>
+            </tr>{% empty %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Não existem profissionais cadastrados.
+                </td>
+            </tr>{% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </tfoot>
+    </table> {% endblock content %} {% block custom_js %}
+    <script>
+    </script>
+{% endblock custom_js %}

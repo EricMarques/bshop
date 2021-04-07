@@ -25,7 +25,7 @@ from rest_framework_swagger.views import get_swagger_view
 
 from rest_framework.authtoken.views import obtain_auth_token
 from django.conf.urls import url, include
-from app.views import views
+from .views import views
 
 from django.contrib import admin
 
@@ -38,6 +38,19 @@ router.register(r'establishment', views.EstablishmentsViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+
+    path('list_establishments',
+         views.GetEstablishments.as_view(template_name='pages/establishment/list_establishments.html'),
+         name='list_establishments'),
+
+    path('list_services',
+         views.GetServices.as_view(template_name='pages/service/list_services.html'),
+         name='list_services'),
+
+    path('list_professionals',
+         views.GetProfessionals.as_view(template_name='pages/professional/list_professionals.html'),
+         name='list_professionals'),
+
     path('get_token', obtain_auth_token, name='obtain_token'),
     path('docs/', schema_view, name='docs'),
 ]

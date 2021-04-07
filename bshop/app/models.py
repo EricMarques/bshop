@@ -53,6 +53,13 @@ class Service(models.Model):
 
 #  Address
 class Address(models.Model):
+    postal_code = models.CharField(
+        verbose_name='CEP',
+        max_length=7,
+        blank=True,
+        null=True,
+    )
+
     street = models.CharField(
         verbose_name='Rua',
         max_length=100,

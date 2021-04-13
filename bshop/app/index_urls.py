@@ -18,6 +18,7 @@ from django.urls import path
 from app.views import index_views
 
 urlpatterns = [
-    path('', index_views.show_index, name='home'),
+    # path('', index_views.show_index, name='home'),
+    path('', index_views.show_dashboard, name='home'),
     path('dashboard', index_views.show_dashboard, name='dashboard'),
 ]

@@ -7,6 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block title %} B-Shop {% endblock title %}</title>
+    <!--Refresh pages-->
+    <!--<meta http-equiv="refresh" content="5">-->
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1"> {% block style%}{% endblock style %}
     <!-- Font Awesome -->
@@ -32,11 +34,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     {% block custom_css%}
-        <style>
-            ul .subitem{
 
-            }
-        </style>
     {% endblock custom_css %}
 </head>
 
@@ -204,7 +202,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{% url 'api:list_establishments' %}" class="nav-link">
+                            <a href="{% url 'app:list_establishments' %}" class="nav-link">
                                 <i class="fas fa-building nav-icon"></i>
                                 <p>Empresa</p>
                             </a>
@@ -212,7 +210,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{% url 'api:list_professionals' %}" class="nav-link">
+                            <a href="{% url 'app:list_professionals' %}" class="nav-link">
                                 <i class="fas fa-user-tie nav-icon"></i>
                                 <p>Pessoas</p>
                             </a>
@@ -220,7 +218,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{% url 'api:list_services' %}" class="nav-link">
+                            <a href="{% url 'app:list_services' %}" class="nav-link">
                                 <i class="fas fa-cogs nav-icon"></i>
                                 <p>Serviços</p>
                             </a>
@@ -246,7 +244,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{% url 'api:docs' %}" class="nav-link">
+                            <a href="{% url 'app:docs' %}" class="nav-link">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>API</p>
                             </a>

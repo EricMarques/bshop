@@ -53,9 +53,9 @@ class Service(models.Model):
 
 #  Address
 class Address(models.Model):
-    postal_code = models.CharField(
+    zip_code = models.CharField(
         verbose_name='CEP',
-        max_length=7,
+        max_length=8,
         blank=True,
         null=True,
     )
@@ -197,6 +197,7 @@ class Professional(models.Model):
     )
 
     class Meta:
+        ordering = ['first_name']
         verbose_name = 'Profissional'
         verbose_name_plural = 'Profissionais'
 
@@ -225,7 +226,8 @@ class Establishment(models.Model):
 
     registered_number = models.CharField(
         verbose_name='CNPJ',
-        max_length=100,
+        max_length=14,
+        unique=True,
         blank=False,
         null=False,
     )
@@ -264,5 +266,6 @@ class Establishment(models.Model):
     )
 
     class Meta:
+        ordering = ['-id']
         verbose_name = 'Estabelecimento'
         verbose_name_plural = 'Estabelecimentos'

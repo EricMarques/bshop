@@ -2,6 +2,7 @@ import os
 import requests
 
 
+# SERVICES
 def list_services():
     url = 'http://localhost:8000/api/service'
     service = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
@@ -14,6 +15,15 @@ def list_services():
     return service_list
 
 
+def count_services():
+    url = 'http://localhost:8000/api/service'
+    service = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
+    services = service.json()
+
+    return services['count']
+
+
+# ESTABLISHMENTS
 def list_establishments():
     url = 'http://localhost:8000/api/establishment'
     establishment = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
@@ -26,6 +36,15 @@ def list_establishments():
     return establishment_list
 
 
+def count_establishment():
+    url = 'http://localhost:8000/api/establishment'
+    establishment = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
+    establishments = establishment.json()
+
+    return establishments['count']
+
+
+# PROFESSIONALS
 def list_professionals():
     url = 'http://localhost:8000/api/professional'
     professional = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
@@ -36,3 +55,11 @@ def list_professionals():
         professional_list.append(professionals['results'][i])
 
     return professional_list
+
+
+def count_professionals():
+    url = 'http://localhost:8000/api/professional'
+    professional = requests.get(url, headers={'Authorization': 'Bearer %s' % os.getenv('DO_ACCESS_TOKEN')})
+    professionals = professional.json()
+
+    return professionals['count']
